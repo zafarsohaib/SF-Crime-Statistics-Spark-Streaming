@@ -2,21 +2,25 @@ import producer_server
 
 
 def run_kafka_server():
-	# TODO get the json file path
-    input_file = ""
+    """
+    Runs Kafka server
+    """
+    input_file = "/home/workspace/police-department-calls-for-service.json"
 
-    # TODO fill in blanks
     producer = producer_server.ProducerServer(
         input_file=input_file,
-        topic="",
-        bootstrap_servers="",
-        client_id=""
+        topic="department.police.service.call",
+        bootstrap_servers="localhost:9092",
+        client_id="police_call"
     )
 
     return producer
 
 
 def feed():
+    """
+    Runs Kafka server and generate data to Kafka topic
+    """
     producer = run_kafka_server()
     producer.generate_data()
 
